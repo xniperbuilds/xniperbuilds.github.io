@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XniperArcade — Free Browser Games | by XniperBuilds</title>
+<meta name="description" content="Play 6 free browser games instantly at XniperArcade — neon arcade, space shooters, runners, puzzles and idle empires by indie studio XniperBuilds. No downloads.">
+<link rel="canonical" href="https://xniperarcade.me/">
+<meta name="theme-color" content="#131216">
+<meta property="og:title" content="XniperArcade — Free Browser Games | by XniperBuilds">
+<meta property="og:description" content="6 free instant browser games. Neon arcade, space shooters, runners, puzzles and idle empires. No downloads, no signup — just play.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xniperarcade.me/">
+<meta property="og:site_name" content="XniperArcade">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XniperArcade — Free Browser Games | by XniperBuilds">
+<meta name="twitter:description" content="6 free instant browser games. No downloads, no signup — just play.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131216'/%3E%3Cpath d='M18 16 46 48M46 16 18 48' stroke='%23a8ff1e' stroke-width='11' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Archivo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "XniperArcade",
+      "url": "https://xniperarcade.me/",
+      "description": "Free instant browser games by indie studio XniperBuilds. No downloads, no signup.",
+      "publisher": { "@type": "Organization", "name": "XniperBuilds", "url": "https://linktr.ee/xniperbuilds" }
+    },
+    {
+      "@type": "ItemList",
+      "name": "XniperArcade Games",
+      "numberOfItems": 6,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Neon Snake Grid", "url": "https://xniperarcade.me/neon-snake-grid/" },
+        { "@type": "ListItem", "position": 2, "name": "Space Shooter", "url": "https://xniperarcade.me/space-shooter/" },
+        { "@type": "ListItem", "position": 3, "name": "Geometry Run", "url": "https://xniperarcade.me/geometry-run/" },
+        { "@type": "ListItem", "position": 4, "name": "Word Grid", "url": "https://xniperarcade.me/word-grid/" },
+        { "@type": "ListItem", "position": 5, "name": "Cookie Empire", "url": "https://xniperarcade.me/cookie-empire/" },
+        { "@type": "ListItem", "position": 6, "name": "Tile Match 3", "url": "https://xniperarcade.me/tile-match-3/" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#131216;
+  --bg-card:#1a191f;
+  --ink:#f4f1e8;
+  --muted:#c7c2b4;
+  --edge:#0c0b0e;
+  --blue:#3d7bff;
+  --green:#a8ff1e;
+  --pink:#ff2e88;
+  --tang:#ff7a1c;
+  --lemon:#ffd61e;
+  --violet:#9d5cff;
+  --cyan:#29e8ff;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip}
+body{
+  overflow-x:clip;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Archivo",sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+[hidden]{display:none!important}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lemon);outline-offset:3px;border-radius:2px}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;background:var(--lemon);color:var(--edge);
+  font-weight:800;padding:.8rem 1.2rem;text-decoration:none;border:3px solid var(--edge);
+}
+.skip:focus-visible{left:1rem;top:1rem}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:1.25rem}
+
+.topbar{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem 1rem;
+  padding-block:1.1rem;position:relative;z-index:5;
+}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;min-height:44px}
+.brand-box{
+  font-family:"Bungee","Archivo",sans-serif;font-size:1rem;background:var(--lemon);color:var(--edge);
+  border:3px solid var(--edge);box-shadow:3px 3px 0 var(--pink);
+  padding:.3rem .45rem;transform:rotate(-4deg);line-height:1;
+}
+.brand-name{font-family:"Bungee","Archivo",sans-serif;font-size:.95rem;letter-spacing:.04em}
+.live-pill{
+  display:inline-flex;align-items:center;gap:.5rem;min-height:44px;
+  border:3px solid var(--ink);padding:.4rem .9rem;
+  font-family:"Archivo",sans-serif;font-weight:900;font-size:.78rem;letter-spacing:.12em;white-space:nowrap;
+}
+.live-dot{width:10px;height:10px;border-radius:50%;background:var(--green);flex:none}
+
+.hero{position:relative;text-align:center;padding:3.2rem 0 3.6rem;z-index:1}
+.hero::before{
+  content:"";position:absolute;inset:-4rem -2rem 0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(420px 320px at 12% 6%,rgba(255,46,136,.17),transparent 62%),
+    radial-gradient(540px 400px at 88% 16%,rgba(61,123,255,.16),transparent 62%),
+    radial-gradient(460px 340px at 60% 100%,rgba(168,255,30,.08),transparent 62%);
+}
+.hero::after{
+  content:"";position:absolute;top:6%;right:-4%;width:44%;height:66%;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(rgba(244,241,232,.22) 1.3px,transparent 1.3px);
+  background-size:18px 18px;
+  -webkit-mask-image:radial-gradient(closest-side,#000 30%,transparent 100%);
+  mask-image:radial-gradient(closest-side,#000 30%,transparent 100%);
+}
+.kicker{
+  display:inline-block;font-family:"Archivo",sans-serif;font-weight:900;font-size:.8rem;letter-spacing:.26em;
+  color:var(--cyan);margin-bottom:1.1rem;
+}
+.logo{
+  font-family:"Bungee","Archivo",sans-serif;font-weight:400;line-height:.94;
+  font-size:clamp(2.7rem,11.5vw,7rem);text-transform:uppercase;
+}
+.logo span{display:block}
+.lx{color:var(--ink);text-shadow:.055em .055em 0 var(--violet)}
+.la b{display:inline-block;font-weight:400}
+.la b:nth-child(1){color:var(--blue);transform:translateY(-.04em) rotate(-2deg)}
+.la b:nth-child(2){color:var(--green);transform:translateY(.03em) rotate(1.5deg)}
+.la b:nth-child(3){color:var(--pink);transform:translateY(-.03em) rotate(-1deg)}
+.la b:nth-child(4){color:var(--tang);transform:translateY(.04em) rotate(2deg)}
+.la b:nth-child(5){color:var(--lemon);transform:translateY(-.04em) rotate(-1.5deg)}
+.la b:nth-child(6){color:var(--violet);transform:translateY(.03em) rotate(1deg)}
+.sub{
+  font-size:1.15rem;color:var(--muted);max-width:42ch;margin:1.4rem auto 0;font-weight:500;
+}
+.sub strong{color:var(--ink);font-weight:800}
+.badges{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;margin-top:1.7rem}
+.badge{
+  font-family:"Archivo",sans-serif;font-weight:900;font-size:.82rem;letter-spacing:.07em;color:var(--edge);
+  border:3px solid var(--edge);padding:.45rem .75rem;box-shadow:3px 3px 0 var(--edge);
+  display:inline-flex;align-items:center;min-height:44px;
+}
+.badge.b1{background:var(--green);transform:rotate(-2.5deg)}
+.badge.b2{background:var(--lemon);transform:rotate(1.5deg)}
+.badge.b3{background:var(--pink);transform:rotate(-1.5deg)}
+.credit{
+  margin-top:1.8rem;display:inline-flex;align-items:center;gap:.55rem;min-height:44px;
+  font-weight:700;font-size:1rem;color:var(--muted);
+  border:3px solid #34323b;padding:.45rem 1rem;border-radius:999px;
+}
+.credit svg{flex:none}
+.cta{
+  display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;min-height:48px;
+  font-family:"Bungee","Archivo",sans-serif;font-size:.92rem;text-decoration:none;color:var(--edge);
+  background:var(--ink);border:3px solid var(--edge);box-shadow:5px 5px 0 var(--blue);
+  padding:.75rem 1.4rem;
+}
+.cta:hover{background:var(--lemon)}
+.cta:active{box-shadow:2px 2px 0 var(--blue)}
+
+.strip-wrap{overflow:hidden;padding-block:1.7rem;position:relative;z-index:2}
+.strip{
+  width:106%;margin-left:-3%;transform:rotate(-1.4deg);
+  background:var(--lemon);border-top:4px solid var(--edge);border-bottom:4px solid var(--edge);
+  box-shadow:0 6px 0 rgba(0,0,0,.45);
+}
+.marquee{overflow:hidden;display:flex;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.m-track{
+  display:flex;align-items:center;gap:2.2rem;flex:none;min-width:100%;
+  padding:.85rem 1.1rem;
+  font-family:"Bungee","Archivo",sans-serif;font-size:.95rem;letter-spacing:.1em;color:var(--edge);
+  white-space:nowrap;
+}
+.m-track svg{flex:none}
+
+.lineup{padding:2.4rem 0 1rem;position:relative;z-index:1}
+.lineup-head{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.lineup-head h2{
+  font-family:"Bungee","Archivo",sans-serif;font-weight:400;font-size:clamp(1.7rem,5.5vw,2.7rem);
+  text-shadow:.07em .07em 0 var(--pink);letter-spacing:.02em;
+}
+.blinker{
+  display:inline-block;width:.42em;height:.74em;background:var(--lemon);margin-left:.2em;
+}
+.count-tag{
+  font-family:"Bungee","Archivo",sans-serif;font-size:.95rem;color:var(--edge);background:var(--cyan);
+  border:3px solid var(--edge);box-shadow:3px 3px 0 var(--edge);padding:.25rem .55rem;
+  transform:rotate(3deg);
+}
+.filters{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:2rem}
+.chip{
+  font-family:"Archivo",sans-serif;font-weight:900;font-size:.82rem;letter-spacing:.08em;
+  background:transparent;color:var(--ink);border:3px solid var(--ink);
+  min-height:44px;padding:.5rem 1.05rem;cursor:pointer;
+}
+.chip:hover{border-color:var(--lemon);color:var(--lemon)}
+.chip[aria-pressed="true"]{
+  background:var(--ink);color:var(--edge);box-shadow:4px 4px 0 var(--pink);border-color:var(--ink);
+}
+.grid{list-style:none;display:grid;grid-template-columns:1fr;gap:1.7rem;padding-bottom:3.5rem}
+.game{position:relative}
+.card{
+  display:flex;flex-direction:column;height:100%;text-decoration:none;position:relative;
+  background:var(--bg-card);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--acc);
+}
+.thumb{position:relative;border-bottom:3px solid var(--ink);background:var(--edge)}
+.thumb::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px);
+  box-shadow:inset 0 0 0 3px rgba(0,0,0,.35);
+}
+.thumb svg{display:block;width:100%;height:auto}
+.genre-tag{
+  position:absolute;top:.7rem;right:.7rem;z-index:2;
+  font-family:"Archivo",sans-serif;font-weight:900;font-size:.78rem;letter-spacing:.1em;
+  background:var(--acc);color:var(--edge);border:3px solid var(--edge);
+  box-shadow:3px 3px 0 var(--edge);padding:.3rem .55rem;transform:rotate(5deg);
+}
+.card-body{display:flex;flex-direction:column;gap:.55rem;padding:1.15rem 1.2rem 1.35rem;flex:1}
+.card-body h3{font-family:"Bungee","Archivo",sans-serif;font-weight:400;font-size:1.3rem;color:var(--ink)}
+.card-body p{color:var(--muted);font-size:1rem}
+.play{
+  margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--acc);color:var(--edge);font-weight:800;font-size:1rem;
+  border:3px solid var(--edge);box-shadow:3px 3px 0 var(--edge);
+  padding:.6rem 1.05rem;min-height:44px;
+}
+.play svg{flex:none;transition:transform .15s ease-out}
+
+footer{
+  border-top:4px solid var(--ink);background:#0e0d11;
+  padding:2.6rem 1.25rem 3rem;text-align:center;position:relative;z-index:1;
+}
+.foot-logo{font-family:"Bungee","Archivo",sans-serif;font-size:1.05rem;margin-bottom:.9rem}
+.foot-logo .fx{color:var(--green)}
+footer p{color:var(--muted);font-size:1rem}
+.follow{
+  display:inline-flex;align-items:center;gap:.55rem;margin-top:1.3rem;min-height:48px;
+  font-family:"Bungee","Archivo",sans-serif;font-size:.85rem;text-decoration:none;color:var(--edge);
+  background:var(--green);border:3px solid var(--edge);box-shadow:4px 4px 0 var(--pink);
+  padding:.7rem 1.3rem;
+}
+.follow:active{box-shadow:1px 1px 0 var(--pink)}
+
+@media (min-width:660px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .game .card{rotate:var(--tilt,0deg)}
+}
+@media (min-width:1080px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .hero{padding-top:4.2rem}
+}
+
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+  @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes scroll-x{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  .hero>*{animation:rise .4s ease-out backwards}
+  .hero>*:nth-child(1){animation-delay:.05s}
+  .hero>*:nth-child(2){animation-delay:.12s}
+  .hero>*:nth-child(3){animation-delay:.2s}
+  .hero>*:nth-child(4){animation-delay:.27s}
+  .hero>*:nth-child(5){animation-delay:.33s}
+  .hero>*:nth-child(6){animation-delay:.38s}
+  .game{animation:rise .38s ease-out backwards}
+  .game:nth-child(1){animation-delay:.3s}
+  .game:nth-child(2){animation-delay:.38s}
+  .game:nth-child(3){animation-delay:.46s}
+  .game:nth-child(4){animation-delay:.54s}
+  .game:nth-child(5){animation-delay:.62s}
+  .game:nth-child(6){animation-delay:.7s}
+  .live-dot{animation:blink 1.6s ease-in-out infinite}
+  .blinker{animation:blink 1.1s steps(1) infinite}
+  .grid.filtered .game{animation:none}
+  .m-track{animation:scroll-x 22s linear infinite}
+  .card{transition:transform .18s ease-out,box-shadow .18s ease-out,rotate .18s ease-out}
+  .card:hover{transform:translate(-4px,-4px) scale(1.02);box-shadow:12px 12px 0 var(--acc);rotate:0deg}
+  .card:hover .play svg{transform:translateX(3px)}
+  .card:active{transform:translate(2px,2px) scale(.97);box-shadow:3px 3px 0 var(--acc);transition-duration:.09s}
+  .cta,.follow,.play,.chip{transition:background .15s ease-out,color .15s ease-out,box-shadow .15s ease-out,transform .15s ease-out}
+  .cta:hover,.follow:hover{transform:translate(-2px,-2px)}
+  .cta:active,.follow:active{transform:translate(2px,2px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .card:hover{box-shadow:10px 10px 0 var(--acc)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#games">Skip to games</a>
+<header class="wrap topbar">
+  <a class="brand" href="https://xniperarcade.me/">
+    <span class="brand-box" aria-hidden="true">XA</span>
+    <span class="brand-name">XNIPERARCADE</span>
+  </a>
+  <span class="live-pill"><span class="live-dot" aria-hidden="true"></span>6 GAMES LIVE</span>
+</header>
+
+<main>
+  <section class="wrap hero" aria-label="XniperArcade intro">
+    <p class="kicker">INSERT COIN — JUST KIDDING, IT'S FREE</p>
+    <h1 class="logo" aria-label="XniperArcade">
+      <span class="lx" aria-hidden="true">XNIPER</span>
+      <span class="la" aria-hidden="true"><b>A</b><b>R</b><b>C</b><b>A</b><b>D</b><b>E</b></span>
+    </h1>
+    <p class="sub">Free instant browser games. <strong>No downloads. No signup.</strong> Open a tab, start playing — six games live and counting.</p>
+    <div class="badges">
+      <span class="badge b1">6 GAMES</span>
+      <span class="badge b2">100% FREE</span>
+      <span class="badge b3">NO SIGNUP</span>
+    </div>
+    <div>
+      <span class="credit">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9h4M8 7v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="9" r="1.4" fill="currentColor"/><circle cx="18.5" cy="11.5" r="1.4" fill="currentColor"/><path d="M7.5 4.5h9A4.5 4.5 0 0 1 21 9v6a4.5 4.5 0 0 1-7.7 3.2L12 17l-1.3 1.2A4.5 4.5 0 0 1 3 15V9a4.5 4.5 0 0 1 4.5-4.5Z" stroke="currentColor" stroke-width="2"/></svg>
+        by XniperBuilds
+      </span>
+    </div>
+    <div>
+      <a class="cta" href="#games">PICK YOUR GAME
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v14m0 0 6-6m-6 6-6-6" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <div class="strip-wrap" aria-hidden="true">
+    <div class="strip">
+      <div class="marquee">
+        <div class="m-track">
+          <span>PLAY FREE</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NO DOWNLOADS</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NEW GAMES WEEKLY</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>PLAY FREE</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NO DOWNLOADS</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NEW GAMES WEEKLY</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>PLAY FREE</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NO DOWNLOADS</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NEW GAMES WEEKLY</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+        </div>
+        <div class="m-track">
+          <span>PLAY FREE</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NO DOWNLOADS</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NEW GAMES WEEKLY</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>PLAY FREE</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NO DOWNLOADS</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NEW GAMES WEEKLY</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>PLAY FREE</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NO DOWNLOADS</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+          <span>NEW GAMES WEEKLY</span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0l1.6 4.4L12 6 7.6 7.6 6 12 4.4 7.6 0 6l4.4-1.6Z"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap lineup" id="games" aria-label="Game lineup">
+    <div class="lineup-head">
+      <h2>THE LINEUP<span class="blinker" aria-hidden="true"></span></h2>
+      <span class="count-tag">06</span>
+    </div>
+    <div class="filters" role="group" aria-label="Filter games by genre">
+      <button class="chip" type="button" data-genre="all" aria-pressed="true">ALL</button>
+      <button class="chip" type="button" data-genre="arcade" aria-pressed="false">ARCADE</button>
+      <button class="chip" type="button" data-genre="shooter" aria-pressed="false">SHOOTER</button>
+      <button class="chip" type="button" data-genre="runner" aria-pressed="false">RUNNER</button>
+      <button class="chip" type="button" data-genre="puzzle" aria-pressed="false">PUZZLE</button>
+      <button class="chip" type="button" data-genre="idle" aria-pressed="false">IDLE</button>
+    </div>
+    <ul class="grid">
+      <li class="game" data-genre="arcade" style="--tilt:-1deg">
+        <a class="card" href="/neon-snake-grid/" style="--acc:var(--green)">
+          <span class="genre-tag">ARCADE</span>
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <rect width="320" height="180" fill="#0b120d"/>
+              <path d="M32 0V180M64 0V180M96 0V180M128 0V180M160 0V180M192 0V180M224 0V180M256 0V180M288 0V180M0 30H320M0 60H320M0 90H320M0 120H320M0 150H320" stroke="#1c2f22" stroke-width="1"/>
+              <path d="M24 142H104V62H208V118H292" fill="none" stroke="#a8ff1e" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity=".16"/>
+              <path d="M24 142H104V62H208V118H292" fill="none" stroke="#a8ff1e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="292" cy="118" r="9" fill="#e4ffb0"/>
+              <path d="M296 30H216V78H140" fill="none" stroke="#29e8ff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity=".15"/>
+              <path d="M296 30H216V78H140" fill="none" stroke="#29e8ff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="64" cy="100" r="5.5" fill="#ff2e88"/>
+              <circle cx="252" cy="152" r="5" fill="#ff2e88"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Neon Snake Grid</h3>
+            <p>Capture territory, battle neon trails, do not die.</p>
+            <span class="play">Play now
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>
+            </span>
+          </div>
+        </a>
+      </li>
+      <li class="game" data-genre="shooter" style="--tilt:1.1deg">
+        <a class="card" href="/space-shooter/" style="--acc:var(--blue)">
+          <span class="genre-tag">SHOOTER</span>
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <rect width="320" height="180" fill="#0a0f24"/>
+              <circle cx="30" cy="22" r="1.6" fill="#fff" opacity=".8"/><circle cx="86" cy="64" r="1.2" fill="#fff" opacity=".5"/>
+              <circle cx="140" cy="14" r="1.4" fill="#fff" opacity=".7"/><circle cx="208" cy="58" r="1.2" fill="#fff" opacity=".45"/>
+              <circle cx="282" cy="26" r="1.7" fill="#fff" opacity=".85"/><circle cx="306" cy="96" r="1.2" fill="#fff" opacity=".5"/>
+              <circle cx="44" cy="120" r="1.3" fill="#fff" opacity=".5"/><circle cx="118" cy="150" r="1.2" fill="#fff" opacity=".4"/>
+              <circle cx="252" cy="140" r="1.5" fill="#fff" opacity=".6"/><circle cx="186" cy="106" r="1.1" fill="#fff" opacity=".4"/>
+              <g fill="#8df0a0">
+                <rect x="56" y="28" width="32" height="18" rx="5"/><rect x="62" y="20" width="4" height="8"/><rect x="78" y="20" width="4" height="8"/>
+              </g>
+              <circle cx="66" cy="37" r="2.6" fill="#0a0f24"/><circle cx="78" cy="37" r="2.6" fill="#0a0f24"/>
+              <g fill="#9d5cff">
+                <rect x="226" y="34" width="32" height="18" rx="5"/><rect x="232" y="26" width="4" height="8"/><rect x="248" y="26" width="4" height="8"/>
+              </g>
+              <circle cx="236" cy="43" r="2.6" fill="#0a0f24"/><circle cx="248" cy="43" r="2.6" fill="#0a0f24"/>
+              <path d="M160 24l4.5 9 9.5 2-7 7 1.5 10-8.5-5-8.5 5 1.5-10-7-7 9.5-2Z" fill="#ffd61e"/>
+              <rect x="142" y="76" width="5" height="36" rx="2.5" fill="#ffd61e"/>
+              <rect x="173" y="62" width="5" height="36" rx="2.5" fill="#ffd61e"/>
+              <path d="M160 112l24 46-24-11-24 11Z" fill="#3d7bff" stroke="#a8c4ff" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="160" cy="132" r="5" fill="#dce8ff"/>
+              <path d="M160 162l6 12-6-4-6 4Z" fill="#ff7a1c"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Space Shooter</h3>
+            <p>Aliens attack from above — shoot them all.</p>
+            <span class="play">Play now
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>
+            </span>
+          </div>
+        </a>
+      </li>
+      <li class="game" data-genre="runner" style="--tilt:-.9deg">
+        <a class="card" href="/geometry-run/" style="--acc:var(--pink)">
+          <span class="genre-tag">RUNNER</span>
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <rect width="320" height="180" fill="#170a13"/>
+              <path d="M0 162H320M40 138V180M120 138V180M200 138V180M280 138V180" stroke="#3a1830" stroke-width="1.5"/>
+              <path d="M0 138H320" stroke="#ff2e88" stroke-width="4"/>
+              <path d="M118 108Q168 30 224 102" fill="none" stroke="#ffd61e" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 10"/>
+              <path d="M22 96h30M14 110h26M28 124h22" stroke="#ff7ab8" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+              <g transform="translate(72 94) rotate(-10)">
+                <rect width="38" height="38" rx="4" fill="#ff2e88" stroke="#fff" stroke-width="3"/>
+                <rect x="21" y="8" width="9" height="9" fill="#fff"/>
+              </g>
+              <path d="M196 138l14-32 14 32Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M228 138l14-32 14 32Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M260 138l11-24 11 24Z" fill="#ff2e88"/>
+              <rect x="288" y="58" width="14" height="14" fill="none" stroke="#ff7ab8" stroke-width="2.5" transform="rotate(14 295 65)"/>
+              <rect x="34" y="38" width="11" height="11" fill="none" stroke="#ff7ab8" stroke-width="2.5" transform="rotate(-12 39 43)"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Geometry Run</h3>
+            <p>Jump rhythmically, beat the music, run forever.</p>
+            <span class="play">Play now
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>
+            </span>
+          </div>
+        </a>
+      </li>
+      <li class="game" data-genre="puzzle" style="--tilt:1deg">
+        <a class="card" href="/word-grid/" style="--acc:var(--lemon)">
+          <span class="genre-tag">PUZZLE</span>
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <rect width="320" height="180" fill="#14130c"/>
+              <g font-family="Archivo,Verdana,sans-serif" font-weight="800" font-size="20" text-anchor="middle">
+                <rect x="54" y="28" width="36" height="36" rx="6" fill="#34333b"/><text x="72" y="53" fill="#d8d4c8">B</text>
+                <rect x="98" y="28" width="36" height="36" rx="6" fill="#34333b"/><text x="116" y="53" fill="#d8d4c8">R</text>
+                <rect x="142" y="28" width="36" height="36" rx="6" fill="#ffd61e"/><text x="160" y="53" fill="#131216">A</text>
+                <rect x="186" y="28" width="36" height="36" rx="6" fill="#34333b"/><text x="204" y="53" fill="#d8d4c8">V</text>
+                <rect x="230" y="28" width="36" height="36" rx="6" fill="#ffd61e"/><text x="248" y="53" fill="#131216">E</text>
+                <rect x="54" y="72" width="36" height="36" rx="6" fill="#43c45f"/><text x="72" y="97" fill="#131216">G</text>
+                <rect x="98" y="72" width="36" height="36" rx="6" fill="#34333b"/><text x="116" y="97" fill="#d8d4c8">R</text>
+                <rect x="142" y="72" width="36" height="36" rx="6" fill="#ffd61e"/><text x="160" y="97" fill="#131216">A</text>
+                <rect x="186" y="72" width="36" height="36" rx="6" fill="#ffd61e"/><text x="204" y="97" fill="#131216">M</text>
+                <rect x="230" y="72" width="36" height="36" rx="6" fill="#43c45f"/><text x="248" y="97" fill="#131216">S</text>
+                <rect x="54" y="116" width="36" height="36" rx="6" fill="#43c45f"/><text x="72" y="141" fill="#131216">G</text>
+                <rect x="98" y="116" width="36" height="36" rx="6" fill="#43c45f"/><text x="116" y="141" fill="#131216">A</text>
+                <rect x="142" y="116" width="36" height="36" rx="6" fill="#43c45f"/><text x="160" y="141" fill="#131216">M</text>
+                <rect x="186" y="116" width="36" height="36" rx="6" fill="#43c45f"/><text x="204" y="141" fill="#131216">E</text>
+                <rect x="230" y="116" width="36" height="36" rx="6" fill="#43c45f"/><text x="248" y="141" fill="#131216">S</text>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Word Grid</h3>
+            <p>Guess the 5-letter word in 6 tries. New puzzle daily.</p>
+            <span class="play">Play now
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>
+            </span>
+          </div>
+        </a>
+      </li>
+      <li class="game" data-genre="idle" style="--tilt:-1.2deg">
+        <a class="card" href="/cookie-empire/" style="--acc:var(--tang)">
+          <span class="genre-tag">IDLE</span>
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <rect width="320" height="180" fill="#1d1106"/>
+              <g stroke="#ff7a1c" stroke-width="6" stroke-linecap="round" opacity=".35">
+                <path d="M160 8v22M160 166v14M62 96h-30M288 96h-22M88 30l16 16M232 30l-16 16M88 162l16-16M232 162l-16-16"/>
+              </g>
+              <circle cx="160" cy="96" r="62" fill="#d99a4e" stroke="#8a5526" stroke-width="5"/>
+              <circle cx="160" cy="96" r="50" fill="none" stroke="#c4853c" stroke-width="3" opacity=".6"/>
+              <circle cx="140" cy="74" r="8" fill="#563312"/><circle cx="186" cy="86" r="7" fill="#563312"/>
+              <circle cx="150" cy="114" r="6.5" fill="#563312"/><circle cx="178" cy="124" r="5.5" fill="#563312"/>
+              <circle cx="126" cy="100" r="5.5" fill="#563312"/><circle cx="168" cy="60" r="5" fill="#563312"/>
+              <path d="M258 38l5 12 12 5-12 5-5 12-5-12-12-5 12-5Z" fill="#ffd61e"/>
+              <path d="M64 134l3.5 8.5 8.5 3.5-8.5 3.5-3.5 8.5-3.5-8.5-8.5-3.5 8.5-3.5Z" fill="#fff" opacity=".85"/>
+              <path d="M250 132l3 7 7 3-7 3-3 7-3-7-7-3 7-3Z" fill="#ffd61e" opacity=".9"/>
+              <text x="234" y="76" font-family="Archivo,Verdana,sans-serif" font-weight="800" font-size="17" fill="#ffd61e">+12</text>
+              <text x="56" y="54" font-family="Archivo,Verdana,sans-serif" font-weight="800" font-size="13" fill="#ffb46b" opacity=".85">+8</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Cookie Empire</h3>
+            <p>Tap the cookie, buy upgrades, grow your empire.</p>
+            <span class="play">Play now
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>
+            </span>
+          </div>
+        </a>
+      </li>
+      <li class="game" data-genre="puzzle" style="--tilt:.9deg">
+        <a class="card" href="/tile-match-3/" style="--acc:var(--violet)">
+          <span class="genre-tag">PUZZLE</span>
+          <div class="thumb">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <rect width="320" height="180" fill="#150d1f"/>
+              <circle cx="76" cy="40" r="16" fill="#3d7bff"/>
+              <circle cx="70" cy="34" r="4" fill="#b8d0ff" opacity=".8"/>
+              <path d="M160 22l13.9 8v16l-13.9 8-13.9-8V30Z" fill="#43c45f"/>
+              <rect x="220" y="24" width="30" height="30" rx="5" fill="#ffd61e"/>
+              <g stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity=".9">
+                <path d="M160 52v8M132 90h-10M188 90h10M160 122v8M138 66l-7-7M182 66l7-7"/>
+              </g>
+              <path d="M104 66l24 24-24 24-24-24Z" fill="#9d5cff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M160 66l24 24-24 24-24-24Z" fill="#9d5cff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M216 66l24 24-24 24-24-24Z" fill="#9d5cff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M98 140l11 6.4v12.8l-11 6.4-11-6.4v-12.8Z" fill="#ff7a1c"/>
+              <circle cx="166" cy="152" r="13" fill="#29e8ff"/>
+              <path d="M232 138l12 12-12 12-12-12Z" fill="#ff2e88"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Tile Match 3</h3>
+            <p>Match 3, trigger combos, beat 30 levels.</p>
+            <span class="play">Play now
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>
+            </span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p class="foot-logo"><span class="fx">XNIPER</span>ARCADE</p>
+  <p>© 2026 XniperArcade · A XniperBuilds production</p>
+  <a class="follow" href="https://linktr.ee/xniperbuilds">Follow us
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7m0 0H9m8 0v8" stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>
+  </a>
+</footer>
+
+<script>
+(function(){
+  var chips=document.querySelectorAll('.chip');
+  var games=document.querySelectorAll('.game');
+  var grid=document.querySelector('.grid');
+  chips.forEach(function(chip){
+    chip.addEventListener('click',function(){
+      grid.classList.add('filtered');
+      chips.forEach(function(c){c.setAttribute('aria-pressed',c===chip?'true':'false');});
+      var g=chip.getAttribute('data-genre');
+      games.forEach(function(card){
+        card.hidden=(g!=='all'&&card.getAttribute('data-genre')!==g);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
